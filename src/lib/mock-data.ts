@@ -1,0 +1,102 @@
+export const mockContacts = [
+  {
+    id: "user-1",
+    name: "Alice Johnson",
+    avatar: "/placeholder.svg?height=40&width=40&text=AJ",
+  },
+  {
+    id: "user-2",
+    name: "Bob Smith",
+    avatar: "/placeholder.svg?height=40&width=40&text=BS",
+  },
+  {
+    id: "user-3",
+    name: "Carol Williams",
+    avatar: "/placeholder.svg?height=40&width=40&text=CW",
+  },
+  {
+    id: "user-4",
+    name: "David Brown",
+    avatar: "/placeholder.svg?height=40&width=40&text=DB",
+  },
+  {
+    id: "user-5",
+    name: "Eva Davis",
+    avatar: "/placeholder.svg?height=40&width=40&text=ED",
+  },
+]
+
+export const mockTransactions = [
+  {
+    id: "tx-1",
+    type: "received",
+    amount: 250.0,
+    date: new Date(2025, 5, 1),
+    sender: mockContacts[0],
+    description: "Monthly payment",
+  },
+  {
+    id: "tx-2",
+    type: "trade",
+    amount: 75.5,
+    date: new Date(2025, 5, 1),
+    sender: mockContacts[1],
+    description: "USD to EUR trade",
+  },
+  {
+    id: "tx-3",
+    type: "received",
+    amount: 1000.0,
+    date: new Date(2025, 4, 28),
+    sender: mockContacts[2],
+    description: "Project payment",
+  },
+  {
+    id: "tx-4",
+    type: "trade",
+    amount: 350.25,
+    date: new Date(2025, 4, 25),
+    sender: mockContacts[0],
+    description: "BTC to USD trade",
+  },
+  {
+    id: "tx-5",
+    type: "sent",
+    amount: 120.0,
+    date: new Date(2025, 4, 22),
+    sender: mockContacts[3],
+    description: "Shared expenses",
+  },
+  {
+    id: "tx-6",
+    type: "trade",
+    amount: 500.0,
+    date: new Date(2025, 4, 20),
+    sender: mockContacts[4],
+    description: "ETH to USD trade",
+  },
+  {
+    id: "tx-7",
+    type: "received",
+    amount: 200.0,
+    date: new Date(2025, 4, 15),
+    sender: mockContacts[1],
+    description: "Shared bill",
+  },
+  {
+    id: "tx-8",
+    type: "trade",
+    amount: 890.75,
+    date: new Date(2025, 4, 12),
+    sender: mockContacts[2],
+    description: "GBP to USD trade",
+  },
+  {
+    id: "tx-9",
+    type: "trade",
+    amount: 150.0,
+    date: new Date(2025, 4, 10),
+    sender: mockContacts[3],
+    description: "JPY to USD trade",
+  },
+]
