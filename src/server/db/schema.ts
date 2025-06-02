@@ -35,3 +35,5 @@ export const transactions_table = createTable(
     ];
   },
 );
+
+export type DB_TransactionType = typeof transactions_table.$inferSelect;
