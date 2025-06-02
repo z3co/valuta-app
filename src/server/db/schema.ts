@@ -1,8 +1,10 @@
 // Example model schema from the Drizzle docs
 // https://orm.drizzle.team/docs/sql-schema-declaration
 
-import { sql } from "drizzle-orm";
-import { index, sqliteTableCreator } from "drizzle-orm/sqlite-core";
+import {
+  index,
+  singlestoreTableCreator,
+} from "drizzle-orm/singlestore-core";
 
 /**
  * This is an example of how to use the multi-project schema feature of Drizzle ORM. Use the same
@@ -10,18 +12,26 @@ import { index, sqliteTableCreator } from "drizzle-orm/sqlite-core";
  *
  * @see https://orm.drizzle.team/docs/goodies#multi-project-schema
  */
-export const createTable = sqliteTableCreator((name) => `valuta-app_${name}`);
+export const createTable = singlestoreTableCreator(
+  (name) => `valuta_app_${name}`,
+);
 
-export const posts = createTable(
-  "post",
+export const transactions_table = createTable(
+  "transactions_table",
   (d) => ({
-    id: d.integer({ mode: "number" }).primaryKey({ autoIncrement: true }),
-    name: d.text({ length: 256 }),
-    createdAt: d
-      .integer({ mode: "timestamp" })
-      .default(sql`(unixepoch())`)
-      .notNull(),
-    updatedAt: d.integer({ mode: "timestamp" }).$onUpdate(() => new Date()),
+    id: d
+      .bigint("id", { mode: "number", unsigned: true })
+      .primaryKey()
+      .autoincrement(),
+    amount: d.text("amount").notNull(),
+    createdAt: d.timestamp("created_at").notNull().defaultNow(),
+    senderId: d.text("sender_id").notNull(),
+    receiverName: d.text("receiver_name").notNull(),
   }),
-  (t) => [index("name_idx").on(t.name)],
+  (t) => {
+    return [
+      index("sender_id_index").on(t.senderId),
+      index("receiver_name_index").on(t.receiverName),
+    ];
+  },
 );
